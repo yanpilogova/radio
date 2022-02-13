@@ -2,22 +2,21 @@ package ru.netology;
 
 public class Radio {
     private int currentStation;
+    private int currentVolume;
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
+    public void setCurrentStation(int currentStation) {
 
-        {
-            if (newCurrentStation < 0) {
-                return;
-            }
-            if (newCurrentStation > 9) {
-                return;
-            }
-            this.currentStation = newCurrentStation;
+        if (currentStation < 0) {
+            return;
         }
+        if (currentStation > 9) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
     public void setToMaxStation() {
@@ -29,8 +28,7 @@ public class Radio {
     public void nextIncreaseStation() {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
-        }
-        if (currentStation == 9) {
+        } else {
             currentStation = 0;
         }
     }
@@ -38,13 +36,10 @@ public class Radio {
     public void prevReduceStation() {
         if (currentStation > 0) {
             currentStation = currentStation - 1;
-        }
-        if (currentStation == 0) {
-            currentStation = currentStation + 9;
+        } else {
+            currentStation = 9;
         }
     }
-
-    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -72,19 +67,16 @@ public class Radio {
     public void nextIncreaseVolumeUpToOne() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
+        } else {
+            currentVolume = 10;
         }
-        if (currentVolume == 10) {
-            currentVolume =currentVolume + 0;
-        }
-
     }
 
     public void prevReduceVolumeUpToOne() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
-        }
-        if (currentVolume == 0) {
-            currentVolume = currentVolume - 0;
+        } else {
+            currentVolume = 0;
         }
     }
 }

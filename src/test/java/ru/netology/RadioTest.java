@@ -42,32 +42,6 @@ class RadioTest {
     @Test
     public void testNextIncreaseStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(0);
-
-        radio.nextIncreaseStation();
-
-        int expected = 1;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testAverageNextIncreaseStation() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(5);
-
-        radio.nextIncreaseStation();
-
-        int expected = 6;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testMaxNextIncreaseStation() {
-        Radio radio = new Radio();
         radio.setCurrentStation(9);
 
         radio.nextIncreaseStation();
@@ -79,11 +53,11 @@ class RadioTest {
     }
 
     @Test
-    public void testPrevReduceStation() {
+    public void testAverageNextIncreaseStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(0);
+        radio.setCurrentStation(8);
 
-        radio.prevReduceStation();
+        radio.nextIncreaseStation();
 
         int expected = 9;
         int actual = radio.getCurrentStation();
@@ -94,11 +68,11 @@ class RadioTest {
     @Test
     public void testAveragePrevReduceStation() {
         Radio radio = new Radio();
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(0);
 
         radio.prevReduceStation();
 
-        int expected = 4;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -116,7 +90,18 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    public void testPrevReduceStation() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(8);
 
+        radio.prevReduceStation();
+
+        int expected = 7;
+        int actual = radio.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
     @Test
     public void testGetCurrentVolume() {
         Radio radio = new Radio();
@@ -150,7 +135,7 @@ class RadioTest {
     }
 
     @Test
-    public void testNextIncreaseVolumeUpToOne() {
+    public void testAverageIncreaseVolumeUpToOne() {
         Radio radio = new Radio();
         radio.setCurrentVolume(10);
 
@@ -163,13 +148,13 @@ class RadioTest {
     }
 
     @Test
-    public void testAverageIncreaseVolumeUpToOne() {
+    public void testIncreaseVolumeUpToOne() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(0);
 
         radio.nextIncreaseVolumeUpToOne();
 
-        int expected = 6;
+        int expected = 1;
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -191,11 +176,11 @@ class RadioTest {
     @Test
     public void testAveragePrevReduceVolumeUpToOne() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(10);
 
         radio.prevReduceVolumeUpToOne();
 
-        int expected = 4;
+        int expected = 9;
         int actual = radio.getCurrentVolume();
 
         assertEquals(expected, actual);
