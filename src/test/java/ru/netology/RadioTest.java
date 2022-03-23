@@ -1,5 +1,6 @@
 package ru.netology;
 
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,26 +9,77 @@ class RadioTest {
     @Test
     public void shouldUseConstructor() {
         Radio radio = new Radio(2);
-        assertEquals(2, radio.getCurrentStation());
+        assertEquals(2, radio.getNumberOfStation());
     }
 
     @Test
     public void shouldUseNoArgsConstructor() {
         Radio radio = new Radio();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(9, radio.getNumberOfStation());
+    }
+    @Test
+    public void shouldGetNumberStation() {
+        Radio radio = new Radio(0);
+        assertEquals(0, radio.getNumberOfStation());
+    }
+    @Test
+    public void shouldSetNumberStationMin() {
+        Radio radio = new Radio();
+        radio.setNumberOfStation(-1);
+        int expected = 9;
+        int actual = radio.getNumberOfStation();
+        assertEquals(expected, actual);
     }
 
     @Test
     public void shouldInitFields() {
         Radio radio = new Radio();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
+        assertEquals(9, radio.getNumberOfStation());
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    void getNumberOfStation() {
+    }
+
+    @Test
+    public void testSetNumberOfStation() {
+        Radio radio = new Radio(9);
+        radio.setNumberOfStation(9);
+        int expected = 9;
+        int actual = radio.getNumberOfStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetNumberOfStationMax() {
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(9);
+
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testIncreaseNumberOfStationMinus() {
+        Radio radio = new Radio(8);
+        radio.setNumberOfStation(7);
+
+        int expected = 7;
+        int actual = radio.getNumberOfStation();
+
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testGetCurrentStation() {
-        Radio radio = new Radio(9);
+        Radio radio = new Radio();
         radio.setCurrentStation(10);
-        int expected = 9;
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -213,4 +265,4 @@ class RadioTest {
 
         assertEquals(expected, actual);
     }
-}
+  }
